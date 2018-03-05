@@ -1,0 +1,25 @@
+@namespace("com.football.events")
+protocol FootballEvents{
+
+  record Game{
+    string gameId;
+    string homeTeam;
+    string visitingTeam;
+    string season;
+  }
+
+  record Events{
+    string eventTeam;
+    string opponent;
+    string gameId;
+    string eventId;
+    string location;
+    string isGoal;
+    string shotOutcome;
+  }
+
+  record GameEvents{
+    Game game;
+    array<Events> events;
+  }
+}

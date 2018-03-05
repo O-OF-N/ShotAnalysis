@@ -1,0 +1,15 @@
+setup.py
+Shot_Analysis.egg-info/PKG-INFO
+Shot_Analysis.egg-info/SOURCES.txt
+Shot_Analysis.egg-info/dependency_links.txt
+Shot_Analysis.egg-info/requires.txt
+Shot_Analysis.egg-info/top_level.txt
+context/JobContext.py
+context/__init__.py
+extract/Events.py
+extract/Extract.py
+extract/Games.py
+extract/MapHelper.py
+extract/__init__.py
+util/ReadDictionary.py
+util/__init__.py
