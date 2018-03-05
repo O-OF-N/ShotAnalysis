@@ -68,6 +68,8 @@ class Extract:
             dictionary = self.get_dictionary_from_broadcast()
             events = self.get_events(event_rdd,dictionary).map_events()
             games = self.get_games(game_rdd).map_games()
+            if events is None or games is None:
+                raise Exception("Invalid events or games rdd")
             game_events = games.join(events)
             return game_events
         except Exception as ex:
