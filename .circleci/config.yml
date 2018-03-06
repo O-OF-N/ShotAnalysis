@@ -33,7 +33,15 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
+            pip install --upgrade pip
+            pip install -r requirements-dev.txt
+            # Download spark 2.2.0
+            "[ -f spark ] || mkdir spark && pushd spark && wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && popd && tar -xf ./spark/spark-2.2.0-bin-hadoop2.7.tgz"
+            # Start the local master
+            pushd spark-2.2.0-bin-hadoop2.7
+            ./sbin/start-master.sh -h localhost
+            ./sbin/start-slave.sh spark://localhost:7077
+            popd
 
       - save_cache:
           paths:
