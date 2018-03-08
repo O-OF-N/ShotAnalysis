@@ -4,10 +4,10 @@
 #
 version: 2
 jobs:
+  machine:
+    java:
+      version: openjdk8
   build:
-    machine:
-      java:
-          version: oraclejdk8
     docker:
       - image: circleci/python:3.6.1
     environment:
