@@ -7,12 +7,12 @@ machine:
   java:
     version: openjdk8
   environment:
-    JAVA8_HOME: /usr/lib/jvm/java-8-openjdk-amd64
+    JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
 dependencies:
   override:
     - sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0/bin/java
     - sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
-    - JAVA8_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 jobs:
   build:
     docker:
