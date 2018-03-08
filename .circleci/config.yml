@@ -22,7 +22,6 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
             echo $JAVA_HOME
             python3 -m venv venv
             . venv/bin/activate
