@@ -3,17 +3,10 @@
 # Check https://circleci.com/docs/2.0/language-python/ for more details
 #
 version: 2
-machine:
-  java:
-    version: openjdk8
-dependencies:
-  override:
-    - sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0/bin/java
-    - sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
-    - echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64' >> ~/.circlerc
 jobs:
   build:
     docker:
+      - image: circleci/openjdk:8-jdk
       - image: circleci/python:3.6.1
     working_directory: ~/repo
     steps:
@@ -29,7 +22,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+            export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home
             echo $JAVA_HOME
             python3 -m venv venv
             . venv/bin/activate
