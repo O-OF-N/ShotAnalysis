@@ -5,10 +5,11 @@
 version: 2
 jobs:
   build:
+    machine:
+      java:
+          version: oraclejdk8
     docker:
       - image: circleci/python:3.6.1
-      - image: circleci/openjdk:latest
-      - image: coorpacademy/docker-pyspark:latest
     environment:
       JVM_OPTS: -Xmx3200m
     working_directory: ~/repo
