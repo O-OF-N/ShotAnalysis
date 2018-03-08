@@ -9,6 +9,8 @@ jobs:
       - image: circleci/python:3.6.1
       - image: circleci/openjdk:latest
       - image: coorpacademy/docker-pyspark:latest
+    environment:
+      JVM_OPTS: -Xmx3200m
     working_directory: ~/repo
 
     steps:
