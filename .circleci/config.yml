@@ -26,9 +26,7 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            apk update
-            apk add ca-certificates
-            update-ca-certificates
+            apk add --update openssl
             mkdir spark && pushd spark && wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && popd && tar -xf ./spark/spark-2.2.0-bin-hadoop2.7.tgz
             pushd spark-2.2.0-bin-hadoop2.7
             ./sbin/start-master.sh -h localhost
