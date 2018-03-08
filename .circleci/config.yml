@@ -8,11 +8,6 @@ machine:
     version: openjdk8
   environment:
     JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
-dependencies:
-  override:
-    - sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0/bin/java
-    - sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
-    - export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 jobs:
   build:
     docker:
@@ -31,6 +26,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
+            export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
             echo $JAVA_HOME
             python3 -m venv venv
             . venv/bin/activate
