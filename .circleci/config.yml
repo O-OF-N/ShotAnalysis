@@ -22,7 +22,7 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            echo SPARK_HOME
+            echo $SPARK_HOME
             python3 -m venv venv
             . venv/bin/activate
             pip install --upgrade pip
