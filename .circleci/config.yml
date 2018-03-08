@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  spark:
     docker:
       - image: circleci/openjdk:8-jdk
     working_directory: ~/repo
@@ -19,7 +19,7 @@ jobs:
             ./sbin/start-slave.sh spark://localhost:7077
             popd
 
-  test:
+  build:
     docker:
       - image: circleci/python:3.6.1
     working_directory: ~/repo
@@ -60,7 +60,7 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build
-      - test:
+      - spark
+      - build:
           requires:
-                - build
+                - spark
