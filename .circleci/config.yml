@@ -7,7 +7,6 @@ jobs:
   build:
     docker:
       - image: jupyter/pyspark-notebook:latest
-    working_directory: ~/repo
 
     steps:
       - checkout
