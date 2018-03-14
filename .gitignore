@@ -8,3 +8,4 @@ Shotanalysis_venv/
 .coverage.*
 *.pyc
 *.zip
+.vscode
