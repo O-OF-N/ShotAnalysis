@@ -4,8 +4,11 @@ Shotanalysis_venv/
 .pytest_cache/
 **/__pycache__
 *.egg-info
+*.egg-info/
 .coverage
 .coverage.*
 *.pyc
 *.zip
 .vscode
+Shot_Analysis.egg-info/SOURCES.txt
+Shot_Analysis.egg-info/requires.txt

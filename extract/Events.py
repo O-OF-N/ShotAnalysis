@@ -1,5 +1,6 @@
 from extract.MapHelper import MapEvents
 from pyspark import RDD
+from pyspark.broadcast import Broadcast
 
 
 class Events:
@@ -15,9 +16,7 @@ class Events:
             raise Exception("Invalid RDD or Dictionary")
         if not isinstance(self.rdd, RDD):
             raise Exception("RDD passed is not an instance of RDD")
-        if not isinstance(self.dictionary, dict):
-            raise Exception(
-                "Dictionary passed is not an instance of dictionary")
+        
         events_fields = MapEvents.get_event_fields(self.rdd)
         if events_fields is None or not isinstance(events_fields, RDD):
             raise Exception("events_fields is None or not an instance of RDD")

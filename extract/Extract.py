@@ -66,6 +66,7 @@ class Extract:
             game_rdd = self.get_game_rdd(sc)
             event_rdd = self.get_event_rdd(sc)
             dictionary = self.get_dictionary_from_broadcast()
+            print("dictionary = ", dictionary)
             events = self.get_events(event_rdd, dictionary).map_events()
             games = self.get_games(game_rdd).map_games()
             if events is None or games is None:

@@ -24,13 +24,6 @@ def test_map_events_rdd_notinstance_RDD():
         events.map_events()
 
 
-def test_map_events_dictionary_notinstance_dict(spark_context):
-    rdd = spark_context.parallelize([1, 2, 3])
-    events = Events(rdd, rdd)
-    with pytest.raises(Exception):
-        events.map_events()
-
-
 def test_map_events_success(spark_context):
     rdd = spark_context.parallelize([1, 2, 3])
     rdd1 = spark_context.parallelize([('a', 4), ('b', 5), ('c', 6)])

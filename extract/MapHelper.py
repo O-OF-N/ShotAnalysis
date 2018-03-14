@@ -3,7 +3,7 @@ from collections import namedtuple
 from pyspark import RDD
 
 
-class MapEvents:
+class MapEvents(object):
     Event = namedtuple(
         "Event", "eventTeam opponent eventId location isGoal shotOutcome")
 
@@ -35,7 +35,7 @@ class MapEvents:
         return rdd.map(lambda x: (x.split(",")[0], tuple(x.split(",")[1:])))
 
 
-class MapGames:
+class MapGames(object):
     Game = namedtuple("Game", "homeTeam visitingTeam season")
 
     @classmethod
