@@ -1,4 +1,8 @@
 dist/
-venv/
+Shotanalysis_venv/
 .idea/
 .pytest_cache/
+*/__pycache__
+*.egg-info
+.coverage
+.coverage.*
