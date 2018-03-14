@@ -6,7 +6,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: jupyter/pyspark-notebook:latest
+      - image: coorpacademy/docker-pyspark:latest
+    working_directory: ~/repo
 
     steps:
       - checkout
