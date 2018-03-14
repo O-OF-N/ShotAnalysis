@@ -6,7 +6,7 @@ class Events:
 
     header = None
 
-    def __init__(self,rdd,dictionary):
+    def __init__(self, rdd, dictionary):
         self.rdd = rdd
         self.dictionary = dictionary
 
@@ -15,13 +15,15 @@ class Events:
             raise Exception("Invalid RDD or Dictionary")
         if not isinstance(self.rdd, RDD):
             raise Exception("RDD passed is not an instance of RDD")
-        if not isinstance(self.dictionary,dict):
-            raise Exception("Dictionary passed is not an instance of dictionary")
+        if not isinstance(self.dictionary, dict):
+            raise Exception(
+                "Dictionary passed is not an instance of dictionary")
         events_fields = MapEvents.get_event_fields(self.rdd)
-        if events_fields is None or not isinstance(events_fields,RDD):
+        if events_fields is None or not isinstance(events_fields, RDD):
             raise Exception("events_fields is None or not an instance of RDD")
         header = events_fields.first()[1]
-        mapped_events = MapEvents.map_events(events_fields,self.dictionary,header)
-        if mapped_events is None or not isinstance(mapped_events,RDD):
+        mapped_events = MapEvents.map_events(
+            events_fields, self.dictionary, header)
+        if mapped_events is None or not isinstance(mapped_events, RDD):
             raise Exception("events_fields is None or not an instance of RDD")
         return mapped_events.groupByKey()

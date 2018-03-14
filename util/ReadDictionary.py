@@ -1,5 +1,6 @@
 from functools import reduce
 
+
 class ReadDictionary():
     """
         This class reads the dictionary.txt file. It breaks it down in to key value pairs.
@@ -11,7 +12,8 @@ class ReadDictionary():
         becomes
         {"card_0": "Red", "card_1": "yellow"}
     """
-    def __init__(self,path):
+
+    def __init__(self, path):
         self.path = path
 
     def read(self):
@@ -31,9 +33,8 @@ class ReadDictionary():
                         key_header = entry[0]+"_"
                     else:
                         key = entry[0].strip()
-                        value = reduce(lambda x1,y1: x1+" "+ y1,entry[1:])
+                        value = reduce(lambda x1, y1: x1+" " + y1, entry[1:])
                         dictionary[key_header+key] = value
-        except FileNotFoundError as fnf:
+        except FileNotFoundError:
             print("File Not found")
         return dictionary
-

@@ -17,9 +17,9 @@ def test_map_games_invalid_rdd():
 
 
 def test_map_games_success(spark_context):
-    rdd = spark_context.parallelize([1,2,3])
-    rdd1 = spark_context.parallelize([('a',4),('b',5),('c',6)])
-    rdd2 = spark_context.parallelize([('a',7),('b',8),('c',9)])
+    rdd = spark_context.parallelize([1, 2, 3])
+    rdd1 = spark_context.parallelize([('a', 4), ('b', 5), ('c', 6)])
+    rdd2 = spark_context.parallelize([('a', 7), ('b', 8), ('c', 9)])
     games = Games(rdd)
     with patch.object(MapGames, 'get_game_fields') as mock_game_fields:
         with patch.object(MapGames, 'map_games') as mock_map_games:
@@ -38,7 +38,7 @@ def test_map_games_success(spark_context):
 
 
 def test_map_games_none_eventfields(spark_context):
-    rdd = spark_context.parallelize([1,2,3])
+    rdd = spark_context.parallelize([1, 2, 3])
     games = Games(rdd)
     with patch.object(MapGames, 'get_game_fields') as mock_game_fields:
         with pytest.raises(Exception):
@@ -47,7 +47,7 @@ def test_map_games_none_eventfields(spark_context):
 
 
 def test_map_games_eventfields_notrdd(spark_context):
-    rdd = spark_context.parallelize([1,2,3])
+    rdd = spark_context.parallelize([1, 2, 3])
     games = Games(rdd)
     with patch.object(MapGames, 'get_game_fields') as mock_game_fields:
         with pytest.raises(Exception):
@@ -56,8 +56,8 @@ def test_map_games_eventfields_notrdd(spark_context):
 
 
 def test_map_games_none_mappedevents(spark_context):
-    rdd = spark_context.parallelize([1,2,3])
-    rdd1 = spark_context.parallelize([('a',4),('b',5),('c',6)])
+    rdd = spark_context.parallelize([1, 2, 3])
+    rdd1 = spark_context.parallelize([('a', 4), ('b', 5), ('c', 6)])
     games = Games(rdd)
     with patch.object(MapGames, 'get_game_fields') as mock_game_fields:
         with patch.object(MapGames, 'map_games') as mock_map_games:
@@ -68,8 +68,8 @@ def test_map_games_none_mappedevents(spark_context):
 
 
 def test_map_games_mappedevents_notrdd(spark_context):
-    rdd = spark_context.parallelize([1,2,3])
-    rdd1 = spark_context.parallelize([('a',4),('b',5),('c',6)])
+    rdd = spark_context.parallelize([1, 2, 3])
+    rdd1 = spark_context.parallelize([('a', 4), ('b', 5), ('c', 6)])
     games = Games(rdd)
     with patch.object(MapGames, 'get_game_fields') as mock_game_fields:
         with patch.object(MapGames, 'map_games') as mock_map_games:

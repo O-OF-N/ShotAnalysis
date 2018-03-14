@@ -1,8 +1,8 @@
 import pytest
-from pyspark import SparkContext,SparkConf
+from pyspark import SparkContext, SparkConf
 
 
-@pytest.fixture(scope="session",name="spark_context")
+@pytest.fixture(scope="session", name="spark_context")
 def spark_context():
     """ fixture for creating a spark context
     Args:
