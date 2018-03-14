@@ -1,10 +1,10 @@
 import pytest
-from extract.Extract import Extract
-from context.JobContext import JobContext
-from util.ReadDictionary import ReadDictionary
+from src.extract.Extract import Extract
+from src.context.JobContext import JobContext
+from src.util.ReadDictionary import ReadDictionary
 from mock import patch
-from extract.Events import Events
-from extract.Games import Games
+from src.extract.Events import Events
+from src.extract.Games import Games
 
 
 def test_extract_empty_paths():

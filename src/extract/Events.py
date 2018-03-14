@@ -1,4 +1,4 @@
-from extract.MapHelper import MapEvents
+from src.extract.MapHelper import MapEvents
 from pyspark import RDD
 from pyspark.broadcast import Broadcast
 

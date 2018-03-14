@@ -1,7 +1,7 @@
-from extract.Events import Events
-from extract.Games import Games
-from context.JobContext import JobContext
-from util.ReadDictionary import ReadDictionary
+from src.extract.Events import Events
+from src.extract.Games import Games
+from src.context.JobContext import JobContext
+from src.util.ReadDictionary import ReadDictionary
 from pyspark import SparkContext, RDD
 
 

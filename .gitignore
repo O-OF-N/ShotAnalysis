@@ -12,3 +12,4 @@ Shotanalysis_venv/
 .vscode
 Shot_Analysis.egg-info/SOURCES.txt
 Shot_Analysis.egg-info/requires.txt
+htmlcov

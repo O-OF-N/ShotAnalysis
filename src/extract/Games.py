@@ -1,4 +1,4 @@
-from extract.MapHelper import MapGames
+from src.extract.MapHelper import MapGames
 from pyspark import RDD
 
 

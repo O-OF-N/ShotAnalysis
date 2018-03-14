@@ -1,7 +1,7 @@
 import pytest
 from mock import patch
-from extract.Games import Games
-from extract.MapHelper import MapGames
+from src.extract.Games import Games
+from src.extract.MapHelper import MapGames
 
 
 def test_map_games_none_rdd():

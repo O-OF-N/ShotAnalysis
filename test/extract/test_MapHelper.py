@@ -1,6 +1,6 @@
 import pytest
-from extract.MapHelper import MapGames
-from extract.MapHelper import MapEvents
+from src.extract.MapHelper import MapGames
+from src.extract.MapHelper import MapEvents
 
 # MapEvents:get_event_fields
 

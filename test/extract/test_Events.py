@@ -1,7 +1,7 @@
 import pytest
 from mock import patch
-from extract.Extract import Events
-from extract.MapHelper import MapEvents
+from src.extract.Extract import Events
+from src.extract.MapHelper import MapEvents
 
 
 def test_map_events_none_rdd():
