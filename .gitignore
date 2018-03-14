@@ -6,3 +6,5 @@ Shotanalysis_venv/
 *.egg-info
 .coverage
 .coverage.*
+*.pyc
+*.zip
