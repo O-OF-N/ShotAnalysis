@@ -1,4 +1,5 @@
 import pytest
+from mock import patch
 from src.extract.MapHelper import MapGames
 from src.extract.MapHelper import MapEvents
 
@@ -37,6 +38,45 @@ def test_get_event_fields_not_rdd():
 
 
 # MapEvents:map_events
+
+def test_get_mapped_events(spark_context):
+    rdd = spark_context.parallelize(["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20", 
+        "10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200", 
+        "100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000"])
+    event_fields = MapEvents.get_event_fields(rdd)
+    header = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    mapped_events = MapEvents.map_events(event_fields,{},header).collect()
+    assert(len(mapped_events) == 3)
+
+
+def test_get_mapped_events_event_fields_none(spark_context):
+    header = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    mapped_events = MapEvents.map_events(None,{},header)
+    assert(mapped_events == None)
+
+
+def test_get_mapped_events_event_fields_not_rdd(spark_context):
+    header = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    mapped_events = MapEvents.map_events({},{},header)
+    assert(mapped_events == None)
+
+def test_get_mapped_events_event_fields_header_none(spark_context):
+    rdd = spark_context.parallelize(["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20", 
+        "10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200", 
+        "100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000"])
+    event_fields = MapEvents.get_event_fields(rdd)
+    header = None
+    mapped_events = MapEvents.map_events(event_fields,{},header)
+    assert(mapped_events == None)
+
+def test_get_mapped_events_event_fields_dictionary_none(spark_context):
+    rdd = spark_context.parallelize(["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20", 
+        "10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200", 
+        "100,200,300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000"])
+    event_fields = MapEvents.get_event_fields(rdd)
+    header = None
+    mapped_events = MapEvents.map_events(event_fields,None,header)
+    assert(mapped_events == None)
 
 
 # MapGames:get_game_fields
