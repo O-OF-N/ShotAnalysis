@@ -2,7 +2,7 @@ import sys
 import os.path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from extract.Extract import Extract
+from src.extract.Extract import Extract
 
 out = Extract("/Users/vm033450/Downloads/football-events/dictionary.txt",
         "/Users/vm033450/Downloads/football-events/events.csv",
