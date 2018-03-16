@@ -1,19 +1,19 @@
 from functools import partial
-from collections import namedtuple
 from pyspark import RDD
+from src.models.NamedTuples import Event, Game
 
 
 class MapEvents(object):
-    Event = namedtuple(
-        "Event", "eventTeam opponent eventId location isGoal shotOutcome")
 
     @classmethod
     def map_rdd_dictionary(self, dictionary, header, element):
-        return [self.Event(eventTeam=element[7], opponent=element[8], eventId=element[0],
-                           location=self.get_from_dict(
-                               dictionary, header[16], element[16]),
-                           isGoal=False if element[15] is '0' else True,
-                           shotOutcome=self.get_from_dict(dictionary, header[14], element[14]))]
+        return [Event(eventTeam=element[7],
+                      opponent=element[8],
+                      eventId=element[0],
+                      location=self.get_from_dict(
+                          dictionary, header[16], element[16]),
+                      isGoal=False if element[15] is '0' else True,
+                      shotOutcome=self.get_from_dict(dictionary, header[14], element[14]))]
 
     @classmethod
     def get_from_dict(self, dictionary, field, key):
@@ -28,7 +28,8 @@ class MapEvents(object):
             return None
         if header is None:
             return None
-        map_with_dictionary = partial(cls.map_rdd_dictionary, dictionary, header)
+        map_with_dictionary = partial(
+            cls.map_rdd_dictionary, dictionary, header)
         return events_fields.mapValues(map_with_dictionary)
 
     @classmethod
@@ -39,13 +40,12 @@ class MapEvents(object):
 
 
 class MapGames(object):
-    Game = namedtuple("Game", "homeTeam visitingTeam season")
 
     @classmethod
     def parse_game(cls, game):
         if len(game) < 8:
             return None
-        return cls.Game(homeTeam=game[6], visitingTeam=game[7], season=game[4])
+        return Game(homeTeam=game[6], visitingTeam=game[7], season=game[4])
 
     @classmethod
     def map_games(cls, games_fields):

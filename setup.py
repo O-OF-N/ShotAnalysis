@@ -5,6 +5,7 @@ setup(
     version = "0.1dev",
     packages = ['src/util',
                 'src/context',
+                'src/models',
                 'src/extract',
                 'src/transform',],   
     install_requires = [
