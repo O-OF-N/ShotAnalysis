@@ -12,7 +12,7 @@ class MapEvents(object):
         return [self.Event(eventTeam=element[7], opponent=element[8], eventId=element[0],
                            location=self.get_from_dict(
                                dictionary, header[16], element[16]),
-                           isGoal=False if element[15] is 0 else True,
+                           isGoal=False if element[15] is '0' else True,
                            shotOutcome=self.get_from_dict(dictionary, header[14], element[14]))]
 
     @classmethod

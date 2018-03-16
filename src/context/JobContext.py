@@ -8,12 +8,12 @@ class JobContext:
 
     @classmethod
     def getsparkcontext(cls):
-        if not cls.__sc == None:
-            return cls.__sc
-
         __conf = SparkConf().setMaster("local").setAppName("Football-Analysis")
-        cls.__sc = SparkContext().getOrCreate(__conf)
-        return cls.__sc
+        if not cls.__sc == None:
+            return cls.__sc.getOrCreate(__conf)
+
+        cls.__sc = SparkContext()
+        return cls.__sc.getOrCreate(__conf)
 
     @classmethod
     def setBroadCast(cls,key,value):
@@ -23,5 +23,7 @@ class JobContext:
     def getBoadCast(cls,key):
         return cls.__broadcast[key]
 
-    def test(self):
-        pass
+    @classmethod
+    def stop(cls):
+        cls.__sc.stop()
+    
