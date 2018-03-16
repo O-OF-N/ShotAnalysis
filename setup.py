@@ -3,7 +3,10 @@ from setuptools import setup
 setup(
     name = "Shot-Analysis",
     version = "0.1dev",
-    packages = ['src/util','src/extract','src/context'],   
+    packages = ['src/util',
+                'src/context',
+                'src/extract',
+                'src/transform',],   
     install_requires = [
         "pyspark == 2.2.1",
         "pytest == 3.4.0",
