@@ -5,9 +5,9 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from src.extract.Extract import Extract
 from src.transform.Transform import Transform
 
-dictionary_path = "dictionary.txt"
-events_path = "events.csv"
-game_info_path = "ginf.csv"
+dictionary_path = "resources/dictionary.txt"
+events_path = "resources/events.csv"
+game_info_path = "resources/ginf.csv"
 
 rdd_extract = Extract(dictionary_path,events_path,game_info_path).extract()
 print(rdd_extract.collect())
