@@ -17,17 +17,18 @@ RUN \
   rm -rf /var/cache/oracle-jdk8-installer
 
 
-# Define commonly used JAVA_HOME variable
+# Define JAVA_HOME
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # Define default command.
 CMD ["bash"]
+
 WORKDIR /var/www
 
 ADD ./requirements.txt requirements.txt
 COPY . /var/www
 RUN pip install --no-cache-dir -r requirements.txt
-RUN py.test -s -v
+#RUN py.test -s -v
 RUN python setup.py sdist
 ENTRYPOINT [ "spark-submit","--py-files","dist/Shot-Analysis-0.1.dev0.tar.gz","driver.py" ]
 
