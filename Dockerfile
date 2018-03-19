@@ -1,9 +1,9 @@
 FROM ubuntu:latest
 
-RUN apt-get update
 
 RUN apt-get -y install software-properties-common python-software-properties
-RUN add-apt-repository ppa:openjdk-r/ppa
+RUN add-apt-repository ppa:webupd8team/java
+RUN apt-get update
 
 # Install Python
 RUN apt-get install -y python3 python3-dev python3-pip python3-virtualenv && \
