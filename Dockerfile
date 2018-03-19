@@ -19,6 +19,8 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /var/cache/oracle-jdk8-installer
 
+RUN apt-get update
+
 
 # Define JAVA_HOME
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
@@ -32,6 +34,6 @@ ADD ./requirements.txt requirements.txt
 COPY . /var/www
 RUN pip3 install --no-cache-dir -r requirements.txt
 #RUN py.test -s -v
-RUN python setup.py sdist
+#RUN python setup.py sdist
 ENTRYPOINT [ "spark-submit","--py-files","dist/Shot-Analysis-0.1.dev0.tar.gz","driver.py" ]
 
