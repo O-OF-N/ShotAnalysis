@@ -4,7 +4,7 @@ RUN apt-get update
 
 # Install Python
 RUN apt-get -y install software-properties-common python-software-properties && \
-  apt-get install -y python python-dev python-pip python-virtualenv && \
+  apt-get install -y python3 python3-dev python3-pip python3-virtualenv && \
   pip install --upgrade pip \
   rm -rf /var/lib/apt/lists/*
 
