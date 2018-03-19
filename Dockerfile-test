@@ -28,9 +28,15 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # Define default command.
 CMD ["bash"]
 
+#Set workdir
 WORKDIR /var/www
 
-ADD ./requirements.txt requirements.txt
-COPY . /var/www
-RUN pip install --no-cache-dir -r requirements.txt
+#Copy resources
+COPY ./src /var/www/src
+COPY ./test /var/www/test
+COPY ./integration-test /var/www/integration-test
+COPY ./requirements.txt /var/www/requirements.txt
+
+#Install dependencies
+RUN pip install --no-cache-dir -r /var/www/requirements.txt
 

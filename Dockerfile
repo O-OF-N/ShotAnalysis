@@ -28,12 +28,25 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 # Define default command.
 CMD ["bash"]
 
+#Set workdir
 WORKDIR /var/www
 
-ADD ./requirements.txt requirements.txt
-COPY . /var/www
+#Copy resources
+COPY ./src /var/www/src
+COPY ./test /var/www/test
+COPY ./integration-test /var/www/integration-test
+COPY ./requirements.txt /var/www/requirements.txt
+COPY ./setup.py /var/www/setup.py
+
+#Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+#Unit test
 RUN py.test -s -v
+
+#Package
 RUN python setup.py sdist
+
+#Define entry point
 ENTRYPOINT [ "spark-submit","--py-files","dist/Shot-Analysis-0.1.dev0.tar.gz","driver.py" ]
 
