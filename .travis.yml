@@ -9,4 +9,4 @@ before_install:
   - docker build -t oofn/pyspark .
 
 script:
-  RUN py.test -s -v
+  py.test -s -v
