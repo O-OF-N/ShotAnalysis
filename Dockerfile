@@ -7,7 +7,7 @@ RUN apt-get update
 
 # Install Python
 RUN apt-get install -y python python-dev python-pip python-virtualenv python-setuptools && \
-  pip install --upgrade pip \
+  pip install --upgrade pip && \
   rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update
