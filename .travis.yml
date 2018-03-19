@@ -8,5 +8,8 @@ services:
 before_install:
   - docker build -f Dockerfile-test -t oofn/pyspark .
 
+install:
+  pip install --no-cache-dir -r /var/www/requirements.txt
+
 script:
   py.test -s -v
