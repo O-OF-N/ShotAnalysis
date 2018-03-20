@@ -22,19 +22,16 @@ class ReadDictionary():
         :return:
         """
         dictionary = {}
-        try:
-            with open(self.path) as file:
-                key_header = ""
-                for line in file:
-                    entry = line.strip().split()
-                    if len(entry) == 0:
-                        continue
-                    if len(entry) == 1:
-                        key_header = entry[0]+"_"
-                    else:
-                        key = entry[0].strip()
-                        value = reduce(lambda x1, y1: x1+" " + y1, entry[1:])
-                        dictionary[key_header+key] = value
-        except FileNotFoundError:
-            print("File Not found")
+        with open(self.path) as file:
+            key_header = ""
+            for line in file:
+                entry = line.strip().split()
+                if len(entry) == 0:
+                    continue
+                if len(entry) == 1:
+                    key_header = entry[0]+"_"
+                else:
+                    key = entry[0].strip()
+                    value = reduce(lambda x1, y1: x1+" " + y1, entry[1:])
+                    dictionary[key_header+key] = value
         return dictionary
