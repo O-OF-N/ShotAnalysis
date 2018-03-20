@@ -4,5 +4,5 @@ class Transform:
     self.rdd = rdd
 
   def transform(self):
-    #self.rdd.
+    #self.rdd.foreach(print)
     pass

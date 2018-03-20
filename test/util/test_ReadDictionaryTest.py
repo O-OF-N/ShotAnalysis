@@ -8,12 +8,12 @@ def test_read():
 
 
 def test_read_path_empty():
-    with pytest.raises(Exception):
+    with pytest.raises(FileNotFoundError):
         ReadDictionary(path="").read()
         
 
 def test_read_path_non_existent():
-    with pytest.raises(Exception):
+    with pytest.raises(FileNotFoundError):
         ReadDictionary(path="test/util/dictionary1.txt").read()
 
 

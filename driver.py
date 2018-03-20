@@ -10,5 +10,4 @@ events_path = "resources/events.csv"
 game_info_path = "resources/ginf.csv"
 
 rdd_extract = Extract(dictionary_path,events_path,game_info_path).extract()
-print(rdd_extract.collect())
-rdd_transform = Transform(rdd_extract).transform()
+Transform(rdd_extract).transform()

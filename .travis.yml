@@ -5,11 +5,8 @@ language: python
 services:
   - docker
 
-before_install:
-  - docker build -f Dockerfile-test -t oofn/pyspark .
-
 install:
-  pip install --no-cache-dir -r requirements.txt
+  docker build -f Dockerfile-test -t oofn/pyspark .
 
 script:
-  py.test -s -v
+  docker run -it oofn/pyspark
