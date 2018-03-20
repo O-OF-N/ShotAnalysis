@@ -27,15 +27,17 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ENV PYSPARK_PYTHON /usr/bin/python3
 ENV PYSPARK_DRIVER_PYTHON /usr/bin/python3
 
-# Define default command.
-CMD ["bash"]
-
 #Set workdir
 WORKDIR /var/www
+
+#Install dependencies
+ADD ./requirements.txt /var/www/requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 #Copy resources
 COPY ./src /var/www/src
 COPY ./test /var/www/test
 COPY ./integration-test /var/www/integration-test
-COPY ./requirements.txt /var/www/requirements.txt
 
+#Define entry point
+ENTRYPOINT [ "py.test", "-s", "-v" ]
