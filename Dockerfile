@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get -y install software-properties-common python-software-properties
+RUN apt-get -y install software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get update
 
@@ -45,13 +45,13 @@ COPY ./driver.py /var/www/driver.py
 COPY ./setup.py /var/www/setup.py
 COPY ./resources /var/www/resources
 
+#Package
+RUN python3 setup.py sdist
+
 
 #Unit test
 RUN py.test -s -v
 
-#Package
-RUN python3 setup.py sdist
-
 #Define entry point
-ENTRYPOINT [ "spark-submit","--py-files","dist/Shot-Analysis-0.1.dev0.tar.gz","driver.py" ]
+#ENTRYPOINT [ "spark-submit","--py-files","dist/Shot-Analysis-0.1.dev0.tar.gz","driver.py" ]
 

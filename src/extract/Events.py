@@ -25,4 +25,4 @@ class Events:
             events_fields, self.dictionary, header)
         if mapped_events is None or not isinstance(mapped_events, RDD):
             raise Exception("events_fields is None or not an instance of RDD")
-        return mapped_events.reduceByKey(lambda r1,r2:r1+r2)
+        return mapped_events

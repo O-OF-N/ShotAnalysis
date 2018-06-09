@@ -26,7 +26,6 @@ def test_map_games_success(spark_context):
             mock_game_fields.return_value = rdd1
             mock_map_games.return_value = rdd2
             result = games.map_games().collect()
-            print(result)
             assert len(result) == 3
             for r in result:
                 if r[0] == 'a':

@@ -5,15 +5,15 @@ class JobContext:
 
     __broadcast = {}
     __sc = None
+    __conf = SparkConf().setMaster("local").setAppName("Football-Analysis")
 
     @classmethod
     def getsparkcontext(cls):
-        __conf = SparkConf().setMaster("local").setAppName("Football-Analysis")
         if not cls.__sc == None:
-            return cls.__sc.getOrCreate(__conf)
+            return cls.__sc.getOrCreate(cls.__conf)
 
         cls.__sc = SparkContext()
-        return cls.__sc.getOrCreate(__conf)
+        return cls.__sc.getOrCreate(cls.__conf)
 
     @classmethod
     def setBroadCast(cls,key,value):

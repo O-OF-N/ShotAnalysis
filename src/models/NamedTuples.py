@@ -9,4 +9,4 @@ Game = namedtuple("Game", "homeTeam visitingTeam season")
 # Transform
 
 PositionByTeamPerYear = namedtuple("PositionByTeamPerYear", "team year location isGoal")
-PositionByCountryPerYear = namedtuple("PositionByTeamPerYear", "country year location isGoal")
+PositionByCountryPerYear = namedtuple("PositionByCountryPerYear", "country year location isGoal")
