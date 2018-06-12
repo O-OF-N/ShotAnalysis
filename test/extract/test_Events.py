@@ -28,7 +28,7 @@ def test_map_events_success(spark_context):
     rdd = spark_context.parallelize([1, 2, 3])
     rdd1 = spark_context.parallelize([('a', 4), ('b', 5), ('c', 6)])
     rdd2 = spark_context.parallelize(
-        [('a', [4]), ('b', [5]), ('c', [6]), ('a', [7]), ('b', [8]), ('c', [9])])
+        [('a', 4), ('b', 5), ('c', 6), ('a', 7), ('b', 8), ('c', 9)])
     events = Events(rdd, {})
     with patch.object(MapEvents, 'get_event_fields') as mock_event_fields:
         with patch.object(MapEvents, 'map_events') as mock_map_events:
@@ -38,11 +38,11 @@ def test_map_events_success(spark_context):
             assert len(result) == 6
             for r in result:
                 if r[0] == 'a':
-                    assert r[1] == [4] or r[1] == [7]
+                    assert r[1] == 4 or r[1] == 7
                 elif r[0] == 'b':
-                    assert r[1] == [5] or r[1] == [8]
+                    assert r[1] == 5 or r[1] == 8
                 elif r[0] == 'c':
-                    assert r[1] == [6] or r[1]== [9]
+                    assert r[1] == 6 or r[1]== 9
 
 
 def test_map_events_none_eventfields(spark_context):

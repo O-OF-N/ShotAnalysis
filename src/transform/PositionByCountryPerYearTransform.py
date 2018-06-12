@@ -7,4 +7,4 @@ class PositionByCountryPerYearTransform(TransformBase):
     super(PositionByCountryPerYearTransform,self).__init__(rdd)
 
   def transform(self):
-    print(self.rdd)
+    pass

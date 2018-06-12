@@ -7,13 +7,13 @@ class MapEvents(object):
 
     @classmethod
     def map_rdd_dictionary(self, dictionary, header, element):
-        return [Event(eventTeam=element[7],
+        return Event(eventTeam=element[7],
                       opponent=element[8],
                       eventId=element[0],
                       location=self.get_from_dict(
                           dictionary, header[16], element[16]),
                       isGoal=False if element[15] is '0' else True,
-                      shotOutcome=self.get_from_dict(dictionary, header[14], element[14]))]
+                      shotOutcome=self.get_from_dict(dictionary, header[14], element[14]))
 
     @classmethod
     def get_from_dict(self, dictionary, field, key):

@@ -2,10 +2,9 @@ from src.transform.PositionByTeamPerYearTransform import PositionByTeamPerYearTr
 
 class Transform:
 
-  def __init__(self, rdd):
-    self.rdd = rdd
+  def __init__(self, extract_path):
+    self.extract_path = extract_path
 
   def transform(self):
-    print('inside transform......')
-    transform1 = PositionByTeamPerYearTransform(self.rdd)
+    transform1 = PositionByTeamPerYearTransform(self.extract_path)
     transform1.transform()

@@ -7,7 +7,6 @@ class TransformBase(ABC):
 
   @abstractmethod
   def __init__(self,rdd):
-    print(rdd)
     self.rdd = rdd
 
   @abstractmethod
